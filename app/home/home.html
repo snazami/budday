@@ -1,0 +1,150 @@
+<div class="containter home">
+	
+	<!-- PANE 1: INTRO -->
+	<div class="pane1">
+		<div>
+			<h1>Welcome to budday </h1>
+			<p>Budday is a new concept striving to give local knowledge a face. We believe that meeting the right people when traveling is essential. Want a buddy for a day to show you around in LA? Take a tour and meet the buddays ready to make your journey about you and show you the secrets of LA.</p>
+			<button class="btn btn-lg btn-success" ng-click="scrollTo('#pane3')">Browse by interests</button>
+			<button class="btn btn-lg btn-success" ng-click="enableMapControls()">Browse by location</button>
+			<button class="btn btn-lg btn-success" ng-click="scrollTo('#pane4')">Become a budday</button>
+		</div>
+		
+	</div>
+
+	<!-- PANE 2: MAP -->
+	<div class="mapContainer">
+		<div class="overlayHeader">
+			<div id="closeMap" ng-click="closeMap()">X</div>
+			<h2> Local knowledge with a face.</h2>
+			<p> Where do you want to go? The buddays are spread out through most of LA. Want to take a look?
+			</p>
+			<button class="btn btn-lg btn-success" ng-click="enableMapControls()">Browse buddays by location</button>
+		</div>
+		<div id='map' class='map'></div>
+	</div>
+
+	<!-- PANE 3: BUDDAYS -->
+	<!--<div>
+		 <div class="overlayHeader">
+			<h1> LOCAL KNOWLEDGE WITH A FACE. </h1>
+			<p> Where do you want to go? The buddays are spread out through most of LA. Want to take a look?
+			</p>
+			<button class="btn btn-lg btn-success" ng-click="enableMapControls()">Browse buddays on map</button>
+		</div> 
+				<div class="col-md-4 no-padding">lol</div>
+				<div class="col-md-4 no-padding">lol</div>
+				<div class="col-md-4 no-padding">lol</div>
+	</div>
+	-->
+
+
+	<div class="pane3" id="pane3">
+		<!-- <div class="overlayHeader hidden-xs">
+			<h2> MEET THE BUDDAYS. </h2>
+		</div> -->
+		<h2> Meet the buddays. </h2>
+		<div class="container-fluid videos no-padding">
+			<div class="col-md-4 no-padding">
+				<img src="/images/budday1.jpg">
+				<div class="description">
+					<h4>Morten</h4>
+					<p>I am super funny guy with nice hats and awesome sunglasses. Always up for a night out or a day in.</p>
+					<a ui-sref="user({user: 'google:108955931555147669472'})">View Profile</a>
+				</div>
+			</div>
+			<div class="col-md-4 no-padding">
+				<img src="/images/budday2.jpg">
+				<div class="description">
+					<h4>Mathias</h4>
+					<p>I am really into hiking. Love my backpack and my camel toes.</p>
+					<a ui-sref="user({user: 'ab12dd5f-2ffa-4ba4-8e17-95629f3063db'})">View Profile</a>
+				</div>
+			</div>
+			<div class="col-md-4 no-padding">
+				<img src="/images/budday3.jpg">
+				<div class="description">
+					<h4>Flora</h4>
+					<p>I would love to show you a good time out. I hang out it Silver Lake and love to party hard.</p>
+					<a ui-sref="user({user: 'facebook:653693618101696'})">View Profile</a>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid" style="padding: 20px; background-color: #F8F8F8;">
+			<button class="btn btn-lg btn-success">See more buddays</button>
+		</div>
+	</div>
+	<div class="pane4" id="pane4">
+		<div>
+			<h2> Want to become a budday?</h2>
+			<p>Being a budday is about meeting new people and showing travelers the great places to go in your city. Buddays are paid for their services. </p>
+			<button class="btn btn-lg btn-success" ui-sref="becomeBudday">Learn more</button>
+		</div>
+	</div>
+
+
+	<!-- PANE 4: LOL 
+	<div class="pane3">
+		<div class="container-fluid" style="background-color: white">
+			<div class="col-md-12">
+			<h1>Other buddays that might interest you</h1>
+			<span ng-repeat="relatedUser in homeCtrl.users | limitTo: 6">
+				<div class="col-md-2 relatedUser shake-slow" style="background-color: white; border-radius: 5px">
+					<a ui-sref="user({user: relatedUser.$id})">
+						<img ng-src="{{relatedUser.profileImageUrl}}">
+		        		{{ relatedUser.first_name }}
+		      		</a>
+		      	</div>
+		    </span>
+		</div>
+	</div>
+	-->
+
+
+</div>
+
+	
+
+
+        <!-- <div class="upperBody">
+			<img class="buddayLogo" src="./images/budday_logo3.png">
+			
+		</div>
+
+		<div class="lowerBody">
+			<div class="padding">
+				<h2> Experience the world like a local.</h2>
+				<p>budday is about meeting people from  bla bla bla...bla bla bla...bla bla bla...bla bla bla...bla bla bla.a...bla bla bla...bla bla bla...bla bla bla.a...bla bla bla...bla bla bla...bla bla bla... Read more about the vision of budday. Experience the world like a local. <a href="">here</a>.</p>
+				
+				<div class="break"></div>
+				<div id="mc_embed_signup">
+					<h2> Subscribe to stay updated on budday.</h2>
+					<form action="//budday.us12.list-manage.com/subscribe/post?u=3f7a49bc61c3fef65115965dd&amp;id=f188423a7a" method="post" id="mc-embedded-subscribe-form" name="submitForm" target="_blank" validate>
+						<input type="text" name="FNAME" id="mce-FNAME" placeholder="name" required>
+						<input type="email" name="EMAIL" id="mce-EMAIL" placeholder="email" required>-->
+							<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					    	<!-- <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3f7a49bc61c3fef65115965dd_f188423a7a" tabindex="-1" value=""></div>   
+						<input type="submit" value="SUBMIT" name="subscribe" id="mc-embedded-subscribe" class="button">
+					</form>
+				</div>
+				<div class="break"></div>
+				<h2> Read our blog. </h2>
+				<p> Read more about budday on our <a href="blog/">blog</a></p>
+				
+			</div>
+		</div> 
+    </div> -->
+
+<!-- <div class="page-wrapper">
+
+  <div class="page-header">
+    <h1><img class="logo-img" src="images/logo.png" /> Welcome to FireSlack</h1>
+  </div>
+
+  <p class="text-center">
+    <a ui-sref="login" class="btn btn-lg btn-default">Login</a> or <a ui-sref="register" class="btn btn-lg btn-primary">Register</a>
+  </p>
+
+  <p>FireSlack is an open source <a href="https://slack.com" target="_blank">Slack</a> clone built using <a href="https://www.firebase.com" target="_blank">Firebase</a>'s <a href="https://www.firebase.com/docs/web/libraries/angular/" target="_blank">AngularFire</a> library. Learn how to create this app from scratch with the <a href="https://thinkster.io/angularfire-slack-tutorial/" target="_blank">Thinkster.io tutorial</a>!</p>
+
+</div> -->

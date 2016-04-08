@@ -1,0 +1,193 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <title>budday</title>
+    <meta name="description" content="Welcome to budday - giving a face to local knowledge">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css' />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="images/ionicons-2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/csshake.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-social.css">
+
+    <!-- endbuild -->
+
+    <!--  mapbox js -->
+    <script src='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox.js/v2.2.4/mapbox.css' rel='stylesheet' />
+
+    <!-- mapbox GL -->
+    <!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.0.0/mapbox-gl-geocoder.js'></script>
+    <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v1.0.0/mapbox-gl-geocoder.css' type='text/css' /> -->
+
+
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
+
+
+  </head>
+  <body ng-app="angularfireSlackApp">
+
+    <!-- mapbox -->
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.min.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/L.Control.Locate.mapbox.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-locatecontrol/v0.43.0/css/font-awesome.min.css' rel='stylesheet' />
+
+      <!-- facebook 
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1691599787720893',
+          xfbml      : true,
+          version    : 'v2.5',
+          status: true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>-->
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <!-- NAVIGATION IS DISPLAYED HERE -->
+    <header ng-controller="AuthCtrl">
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="home">
+                      <img class="buddayLogoS" style="display: inline-block;" src="./images/budday_friends.png">budday
+                    </a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </div>
+            </button>
+                <ul class="nav navbar-nav navbar-right collapse navbar-collapse">
+                    <li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a ui-sref="channels"> Browse</a></li>
+                    <li ng-hide="profile"><a ui-sref="login"> Log in</a></li>
+                    <li ng-show="profile"><a id="dropdownMenu1" data-toggle="dropdown">
+                      <strong>@{{profile.first_name}}</strong>
+                      <span class="caret"></span></a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                          <li><a ui-sref="profile">Profile</a></li>
+                          <li role="separator" class="divider"></li>
+                          <li><a ng-click="logout()">Log out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- VIEWS ARE DISPLAYED HERE -->
+      <ui-view></ui-view>
+
+    <!-- FOOTER IS DISPLAYED HERE -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+          <h4>About</h4>
+              <a href="/blog">Blog</a><br>
+              <a ui-sref="about">About</a><br>
+              <a ui-sref="about">Contact</a><br>
+          </div>
+          <div class="col-md-4">
+            <h4> Connect</h4>
+            <div>
+              <a href="http://twitter.com/home?status=" title="Share on Twitter" target="_blank" class="btn btn-twitter"><i class="fa fa-twitter"></i> Twitter</a><br>
+              <a href="https://www.facebook.com/" title="Share on Facebook" target="_blank" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div id="mc_embed_signup">
+              <h4> Subscribe to stay updated</h4>
+              <form action="//budday.us12.list-manage.com/subscribe/post?u=3f7a49bc61c3fef65115965dd&amp;id=f188423a7a" method="post" id="mc-embedded-subscribe-form" name="submitForm" target="_blank" validate>
+                <div class="form-group">
+                  <input type="text" name="FNAME" id="mce-FNAME" class="form-control" placeholder="name" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" name="EMAIL" id="mce-EMAIL" class="form-control" placeholder="email" required>
+                </div>
+                <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_3f7a49bc61c3fef65115965dd_f188423a7a" tabindex="-1" value=""></div>   
+                <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-block btn-success">
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <a ui-sref="home">
+                <img class="buddayLogoS" style="display: inline-block; float: none" src="./images/budday_friends.png">
+              </a>
+            &#169 2016 budday
+            </div>
+          </div>
+        </div>
+    </footer>
+   
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-md5/angular-md5.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- GeoFire and RSVP -->
+    <script src="rsvp.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/geofire/2.0.0/geofire.min.js"></script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app.js"></script>
+    <script src="auth/auth.controller.js"></script>
+    <script src="auth/auth.service.js"></script>
+    <script src="users/profile.controller.js"></script>
+    <script src="users/users.service.js"></script>
+    <script src="channels/channels.service.js"></script>
+    <script src="channels/channels.controller.js"></script>
+    <script src="channels/messages.controller.js"></script>
+    <script src="channels/messages.service.js"></script>
+    <script src="users/user.controller.js"></script>
+    <script src="home/home.controller.js"></script>
+    <script src="home/becomeBudday.controller.js"></script>
+
+    <!-- endbuild -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</body>
+</html>

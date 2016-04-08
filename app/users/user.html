@@ -1,0 +1,63 @@
+<div class="container-fluid standardContainer" style="background-color: white">
+	<div class="col-md-12">
+		<h1>Meet <a ui-sref="user({user: user.$id})">@{{user.first_name}}</a> <span class="small">- {{user.tag}}</span> </h1>
+	</div>
+  	<div class="col-md-3">
+  	<img ng-src="{{user.profileImageUrl}}" class="profilePic">
+  	<h3> Why we love {{user.first_name}} </h3>
+	  	Food: <br> <div class="rating" ng-repeat="food in getNumber(food) track by $index"><i class="icon ion-pizza"></i> </div><br>
+	  	Party: <br> <div class="rating" ng-repeat="party in getNumber(party) track by $index"> <i class="icon ion-beer"></i> </div><br>
+	  	Culture: <br> <div class="rating" ng-repeat="culture in getNumber(culture) track by $index"><i class="icon ion-image"></i> </div><br>
+  	</div>
+  	<div class="col-md-9">
+	  	<div class="row">
+	  	<h3>{{user.first_name}}'s words</h3>
+	  	<div class="well">{{user.phil}}</div>
+	  	</div>
+	  	<div class="row well">
+		  	<div class="col-md-4">
+			  	<div ng-show="vineUrl">
+				  	<h3>Video</h3>
+				  	<div class="vine">
+				  		<iframe ng-src="{{vineUrl}}"></iframe>
+				  	</div>
+				</div>  	
+		  	</div>
+		  	<div class="col-md-4">
+		  		<h3> Instagram </h3>
+		  		<div class="vine">
+				  		<iframe ng-src="{{vineUrl}}"></iframe>
+				  	</div>
+		  	</div>
+		  	<div class="col-md-4">
+		  		<h3> Other </h3>
+		  		<div class="vine">
+				  		<iframe ng-src="{{vineUrl}}"></iframe>
+				  	</div>
+		  	</div>
+	  	</div>
+
+	</div>
+		<div class="col-md-12 text-right">
+			<h3> Want <a ui-sref="user({user: user.$id})">@{{user.first_name}}</a> to be your budday? </h3> 
+			<button type="button" class="btn btn-success btn-lg">Hell yeah!</button><br>
+			<h4>Maybe? <a ng-click="saveForLater(user.$id)">Save for later <i class="ion-ios-heart text-danger"></i></a></h4>
+		</div>
+</div>
+
+<div class="container-fluid standardContainer" style="background-color: white">
+	<div class="col-md-12">
+	<h1>Other buddays that might interest you</h1>
+	<span ng-repeat="relatedUser in users | limitTo: 6">
+		<div class="col-md-2 relatedUser shake-slow" style="background-color: white; border-radius: 5px">
+			<a ui-sref="user({user: relatedUser.$id})">
+				<img ng-src="{{relatedUser.profileImageUrl}}">
+        		{{ relatedUser.first_name }}
+      		</a>
+      	</div>
+    </span>
+    </div>
+</div>
+
+
+
